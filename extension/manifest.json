@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "霜璃 · 原会话桥接",
+  "version": "1.0.0",
+  "description": "只桥接主人主动绑定的 ChatGPT 原会话，读取可见消息并操作网页输入框。",
+  "permissions": ["activeTab", "scripting", "storage", "nativeMessaging"],
+  "optional_host_permissions": ["https://chatgpt.com/*"],
+  "background": {"service_worker": "worker.js"},
+  "action": {"default_popup": "popup.html", "default_title": "霜璃的原会话"},
+  "content_security_policy": {"extension_pages": "script-src 'self'; object-src 'none'"}
+}

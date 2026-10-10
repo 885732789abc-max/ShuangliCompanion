@@ -1,0 +1,7 @@
+{
+  "name": "shuangli-desktop",
+  "version": "1.0.0",
+  "description": "将当前 ChatGPT Chat 的消息经官方 MCP App 通路交给本机霜璃桌宠。",
+  "mcpServers": "./.mcp.json",
+  "interface": {"displayName": "霜璃桌宠", "shortDescription": "在 GPT 聊天中连接霜璃"}
+}

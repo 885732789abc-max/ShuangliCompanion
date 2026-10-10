@@ -1,0 +1,565 @@
+{
+  "schema": 1,
+  "id": "default",
+  "name": "霜璃 · 原图",
+  "actions": {
+    "idle": {
+      "enter": [],
+      "loop": [
+        "approved-q/shuangli-exact-cutout.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 0,
+      "duration": 0,
+      "effect": "",
+      "quality": "Original pixels separated in PSD2Live; static fallback, pose motion pending"
+    },
+    "walk": {
+      "enter": [],
+      "loop": [
+        "approved-q/shuangli-exact-cutout.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 1,
+      "duration": 0,
+      "effect": "",
+      "quality": "Original pixels separated in PSD2Live; static fallback, pose motion pending"
+    },
+    "sit": {
+      "enter": [],
+      "loop": [
+        "poses/shuangli-q/sit-v1.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 0,
+      "duration": 30,
+      "effect": "pose",
+      "quality": "Reference-preserving independent 2D pose artwork; timed blend, no limb rig"
+    },
+    "sleep": {
+      "enter": [],
+      "loop": [
+        "poses/shuangli-q/sleep-v1.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 0,
+      "duration": 0,
+      "effect": "pose",
+      "quality": "Reference-preserving independent 2D pose artwork; timed blend, no limb rig"
+    },
+    "stretch": {
+      "enter": [],
+      "loop": [
+        "poses/shuangli-q/stretch-v1.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 1,
+      "duration": 3,
+      "effect": "pose",
+      "quality": "Reference-preserving independent 2D pose artwork; timed blend, no limb rig"
+    },
+    "working": {
+      "enter": [],
+      "loop": [
+        "approved-q/shuangli-exact-cutout.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 2,
+      "duration": 0,
+      "effect": "",
+      "quality": "Original pixels separated in PSD2Live; static fallback, pose motion pending"
+    },
+    "happy": {
+      "enter": [],
+      "loop": [
+        "approved-q/shuangli-exact-cutout.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 4,
+      "duration": 1.7,
+      "effect": "",
+      "quality": "Original pixels separated in PSD2Live; static fallback, pose motion pending"
+    },
+    "hurt": {
+      "enter": [],
+      "loop": [
+        "approved-q/shuangli-exact-cutout.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 4,
+      "duration": 1.7,
+      "effect": "",
+      "quality": "Original pixels separated in PSD2Live; static fallback, pose motion pending"
+    },
+    "curious": {
+      "enter": [],
+      "loop": [
+        "approved-q/shuangli-exact-cutout.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 4,
+      "duration": 1.7,
+      "effect": "",
+      "quality": "Original pixels separated in PSD2Live; static fallback, pose motion pending"
+    },
+    "drag": {
+      "enter": [],
+      "loop": [
+        "approved-q/shuangli-exact-cutout.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 8,
+      "duration": 0,
+      "effect": "",
+      "quality": "Original pixels separated in PSD2Live; static fallback, pose motion pending"
+    },
+    "land": {
+      "enter": [],
+      "loop": [
+        "approved-q/shuangli-exact-cutout.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 6,
+      "duration": 0.45,
+      "effect": "",
+      "quality": "Original pixels separated in PSD2Live; static fallback, pose motion pending"
+    },
+    "notice": {
+      "enter": [],
+      "loop": [
+        "approved-q/shuangli-exact-cutout.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 2,
+      "duration": 1.6,
+      "effect": "expression",
+      "quality": "Shared approved artwork; runtime eye expression and restrained whole-character motion"
+    },
+    "look_around": {
+      "enter": [],
+      "loop": [
+        "approved-q/shuangli-exact-cutout.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 1,
+      "duration": 2.4,
+      "effect": "expression",
+      "quality": "Shared approved artwork; runtime eye expression and restrained whole-character motion"
+    },
+    "content": {
+      "enter": [],
+      "loop": [
+        "approved-q/shuangli-exact-cutout.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 1,
+      "duration": 2.4,
+      "effect": "expression",
+      "quality": "Shared approved artwork; runtime eye expression and restrained whole-character motion"
+    },
+    "blink_slow": {
+      "enter": [],
+      "loop": [
+        "approved-q/shuangli-exact-cutout.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 1,
+      "duration": 1.6,
+      "effect": "expression",
+      "quality": "Shared approved artwork; runtime eye expression and restrained whole-character motion"
+    },
+    "yawn": {
+      "enter": [],
+      "loop": [
+        "approved-q/shuangli-exact-cutout.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 2,
+      "duration": 2.4,
+      "effect": "expression",
+      "quality": "Shared approved artwork; runtime eye expression and restrained whole-character motion"
+    },
+    "wake_up": {
+      "enter": [],
+      "loop": [
+        "approved-q/shuangli-exact-cutout.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 3,
+      "duration": 2.4,
+      "effect": "expression",
+      "quality": "Shared approved artwork; runtime eye expression and restrained whole-character motion"
+    },
+    "drowsy": {
+      "enter": [],
+      "loop": [
+        "poses/shuangli-q/sit-v1.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 0,
+      "duration": 0,
+      "effect": "pose",
+      "quality": "Reference-preserving independent 2D pose artwork; timed blend, no limb rig"
+    },
+    "pat": {
+      "enter": [],
+      "loop": [
+        "approved-q/shuangli-exact-cutout.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 4,
+      "duration": 2.4,
+      "effect": "expression",
+      "quality": "Shared approved artwork; runtime eye expression and restrained whole-character motion"
+    },
+    "edge_peek": {
+      "enter": [],
+      "loop": [
+        "approved-q/shuangli-exact-cutout.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 2,
+      "duration": 2.4,
+      "effect": "expression",
+      "quality": "Shared approved artwork; runtime eye expression and restrained whole-character motion"
+    },
+    "shy": {
+      "enter": [],
+      "loop": [
+        "approved-q/shuangli-exact-cutout.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 4,
+      "duration": 1.7,
+      "effect": "expression",
+      "quality": "Shared approved artwork; runtime eye expression and restrained whole-character motion"
+    },
+    "startled": {
+      "enter": [],
+      "loop": [
+        "approved-q/shuangli-exact-cutout.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 4,
+      "duration": 1.7,
+      "effect": "expression",
+      "quality": "Shared approved artwork; runtime eye expression and restrained whole-character motion"
+    },
+    "wing_adjust": {
+      "enter": [],
+      "loop": [
+        "approved-q/shuangli-exact-cutout.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 4,
+      "duration": 1.7,
+      "effect": "expression",
+      "quality": "Shared approved artwork; runtime eye expression and restrained whole-character motion"
+    },
+    "tail_flick": {
+      "enter": [],
+      "loop": [
+        "approved-q/shuangli-exact-cutout.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 4,
+      "duration": 1.7,
+      "effect": "expression",
+      "quality": "Shared approved artwork; runtime eye expression and restrained whole-character motion"
+    },
+    "fall": {
+      "enter": [],
+      "loop": [
+        "approved-q/shuangli-exact-cutout.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 7,
+      "duration": 0,
+      "effect": "expression",
+      "quality": "Shared approved artwork; runtime eye expression and restrained whole-character motion"
+    },
+    "glance_away": {
+      "enter": [],
+      "loop": [
+        "approved-q/shuangli-exact-cutout.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 1,
+      "duration": 2.6,
+      "effect": "expression",
+      "quality": "Shared approved artwork; distinct runtime eye expression and restrained whole-character motion"
+    },
+    "head_tilt": {
+      "enter": [],
+      "loop": [
+        "approved-q/shuangli-exact-cutout.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 1,
+      "duration": 3.2,
+      "effect": "expression",
+      "quality": "Shared approved artwork; distinct runtime eye expression and restrained whole-character motion"
+    },
+    "attentive": {
+      "enter": [],
+      "loop": [
+        "approved-q/shuangli-exact-cutout.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 1,
+      "duration": 4.0,
+      "effect": "expression",
+      "quality": "Shared approved artwork; distinct runtime eye expression and restrained whole-character motion"
+    },
+    "daydream": {
+      "enter": [],
+      "loop": [
+        "approved-q/shuangli-exact-cutout.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 1,
+      "duration": 4.8,
+      "effect": "expression",
+      "quality": "Shared approved artwork; distinct runtime eye expression and restrained whole-character motion"
+    },
+    "bashful_smile": {
+      "enter": [],
+      "loop": [
+        "approved-q/shuangli-exact-cutout.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 1,
+      "duration": 3.0,
+      "effect": "expression",
+      "quality": "Shared approved artwork; distinct runtime eye expression and restrained whole-character motion"
+    },
+    "double_blink": {
+      "enter": [],
+      "loop": [
+        "approved-q/shuangli-exact-cutout.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 1,
+      "duration": 1.8,
+      "effect": "expression",
+      "quality": "Shared approved artwork; distinct runtime eye expression and restrained whole-character motion"
+    },
+    "perk_up": {
+      "enter": [],
+      "loop": [
+        "approved-q/shuangli-exact-cutout.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 1,
+      "duration": 2.2,
+      "effect": "expression",
+      "quality": "Shared approved artwork; distinct runtime eye expression and restrained whole-character motion"
+    },
+    "relieved": {
+      "enter": [],
+      "loop": [
+        "approved-q/shuangli-exact-cutout.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 1,
+      "duration": 3.0,
+      "effect": "expression",
+      "quality": "Shared approved artwork; distinct runtime eye expression and restrained whole-character motion"
+    },
+    "settle": {
+      "enter": [],
+      "loop": [
+        "approved-q/shuangli-exact-cutout.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 1,
+      "duration": 2.8,
+      "effect": "expression",
+      "quality": "Shared approved artwork; distinct runtime eye expression and restrained whole-character motion"
+    },
+    "sleepy_nod": {
+      "enter": [],
+      "loop": [
+        "poses/shuangli-q/sleep-v1.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 1,
+      "duration": 3.5,
+      "effect": "pose",
+      "quality": "Existing closed-eye rest artwork; brief nod before returning to seated rest"
+    },
+    "meme_shock": {
+      "enter": [],
+      "loop": [
+        "poses/shuangli-q/memes/meme_shock-v1.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 4,
+      "duration": 2.8,
+      "effect": "pose",
+      "quality": "Reference-preserving imagegen full-body comic pose; equal-scale transparent sprite"
+    },
+    "meme_smug": {
+      "enter": [],
+      "loop": [
+        "poses/shuangli-q/memes/meme_smug-v1.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 4,
+      "duration": 3.2,
+      "effect": "pose",
+      "quality": "Reference-preserving imagegen full-body comic pose; equal-scale transparent sprite"
+    },
+    "meme_pout": {
+      "enter": [],
+      "loop": [
+        "poses/shuangli-q/memes/meme_pout-v1.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 4,
+      "duration": 2.8,
+      "effect": "pose",
+      "quality": "Reference-preserving imagegen full-body comic pose; equal-scale transparent sprite"
+    },
+    "meme_tears": {
+      "enter": [],
+      "loop": [
+        "poses/shuangli-q/memes/meme_tears-v1.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 4,
+      "duration": 3.4,
+      "effect": "pose",
+      "quality": "Reference-preserving imagegen full-body comic pose; equal-scale transparent sprite"
+    },
+    "meme_dizzy": {
+      "enter": [],
+      "loop": [
+        "poses/shuangli-q/memes/meme_dizzy-v1.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 5,
+      "duration": 3.8,
+      "effect": "pose",
+      "quality": "Reference-preserving imagegen full-body comic pose; equal-scale transparent sprite"
+    },
+    "meme_flop": {
+      "enter": [],
+      "loop": [
+        "poses/shuangli-q/memes/meme_flop-v1.png"
+      ],
+      "exit": [],
+      "fps": 1,
+      "priority": 4,
+      "duration": 5.2,
+      "effect": "pose",
+      "quality": "Reference-preserving imagegen full-body comic pose; equal-scale transparent sprite"
+    }
+  },
+  "hit_regions": [
+    {
+      "name": "horn",
+      "rect": [
+        0.13,
+        0.02,
+        0.3,
+        0.25
+      ]
+    },
+    {
+      "name": "horn",
+      "rect": [
+        0.65,
+        0.02,
+        0.81,
+        0.25
+      ]
+    },
+    {
+      "name": "head",
+      "rect": [
+        0.25,
+        0.1,
+        0.65,
+        0.4
+      ]
+    },
+    {
+      "name": "cheek",
+      "rect": [
+        0.26,
+        0.39,
+        0.63,
+        0.53
+      ]
+    },
+    {
+      "name": "wing",
+      "rect": [
+        0,
+        0.54,
+        0.23,
+        0.73
+      ]
+    },
+    {
+      "name": "wing",
+      "rect": [
+        0.75,
+        0.54,
+        0.98,
+        0.71
+      ]
+    },
+    {
+      "name": "tail",
+      "rect": [
+        0.73,
+        0.72,
+        0.99,
+        0.95
+      ]
+    }
+  ],
+  "renderer_status": "Cubism alpha rig with eye expressions plus independent seated, resting and stretching pose sprites"
+}

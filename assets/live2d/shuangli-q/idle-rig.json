@@ -1,0 +1,12 @@
+{
+  "parameters": [
+    "ParamTail",
+    "ParamWingL",
+    "ParamWingR",
+    "ParamIdleAhoge",
+    "ParamIdleHairL",
+    "ParamIdleHairR"
+  ],
+  "backing": "neutral-backing.png",
+  "pinned_roots": true
+}

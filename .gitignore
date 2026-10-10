@@ -1,0 +1,45 @@
+# Local settings, credentials, logs, and generated packages
+.venv/
+build/
+dist/
+data/
+*.log
+*.tmp
+__pycache__/
+*.py[cod]
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+*credentials*.json
+*secret*.json
+
+# This checkout's private handoff and local plugin settings
+AGENTS.md
+PAUSED.md
+.codex/
+plugins/**/.mcp.json
+
+# Downloaded tools and reference repositories
+tools/
+research/
+tunnel-client/
+
+# Working art, captures, backups, and unused personal references
+art/archives/
+art/idle-model-stage/
+art/idle-motion-preview/
+art/model-backups/
+art/runtime-captures/
+art/editor-request.json
+art/RESOURCE-*.md
+art/shuangli-q-v1/*
+!art/shuangli-q-v1/shuangli-layered-alpha.psd
+!art/shuangli-q-v1/shuangli-idle.psd2live
+!art/shuangli-q-v1/shuangli-exact-cutout.png
+art/shuangli-memes/prompt.md
+assets/references/p03.jpg
+assets/references/small-reference.png
+assets/legacy/

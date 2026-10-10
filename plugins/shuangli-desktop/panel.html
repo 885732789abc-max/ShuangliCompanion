@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>body{font:14px system-ui;background:#faf6ff;color:#76568e;padding:18px}h3{margin:0 0 12px}button{border:1px solid #ddcbed;border-radius:12px;padding:9px 16px;background:#eee1fa;color:#76568e}p{line-height:1.7}</style>
+<h3>霜璃在桌面等主人</h3><p id="status">正在连接这条聊天……</p><button id="connect">连接这条聊天</button>
+<script>
+let nextId=1,binding='',enabled=false,polling=false,hostReady=false;
+const requests=new Map(),seen=new Set();
+const status=document.getElementById('status');
+function rpc(method,params){return new Promise((resolve,reject)=>{
+ const id=nextId++,timer=setTimeout(()=>{requests.delete(id);reject(Error('Host response timed out'));},15000);
+ requests.set(id,{resolve,reject,timer});parent.postMessage({jsonrpc:'2.0',id,method,params},'*');
+});}
+function resultValue(result){if(result.isError)throw Error(result.content?.[0]?.text||'工具暂时无法使用');return result.structuredContent||JSON.parse(result.content?.[0]?.text||'{}');}
+function call(args){return rpc('tools/call',{name:'poll_desktop',arguments:{binding,...args}}).then(resultValue);}
+async function bind(){
+ if(!hostReady||!binding)return;
+ try{await call({event:'ready'});enabled=true;status.textContent='已连接，主人可以在脚下小窗说话。';}
+ catch(error){enabled=false;status.textContent=error.message;}
+}
+window.addEventListener('message',event=>{
+ if(event.source!==parent)return;
+ const message=event.data;if(!message||message.jsonrpc!=='2.0')return;
+ if('id'in message&&requests.has(message.id)){
+   const entry=requests.get(message.id);clearTimeout(entry.timer);requests.delete(message.id);
+   message.error?entry.reject(Error(message.error.message)):entry.resolve(message.result);return;
+ }
+ if(message.method==='ui/notifications/tool-result'){
+   try{const value=resultValue(message.params);if(value.binding){binding=value.binding;bind();}}catch(error){status.textContent=error.message;}
+ }
+});
+async function poll(){
+ if(!enabled||polling)return;polling=true;
+ try{
+   const value=await call({});const request=value.request;
+   if(request&&!seen.has(request.id)){
+     seen.add(request.id);if(seen.size>128)seen.delete(seen.values().next().value);
+     try{
+       await rpc('ui/message',{role:'user',content:[{type:'text',text:request.text},{type:'text',text:'桌宠回传编号：'+request.id+'。请按当前聊天正常回答，再用 publish_reply 将这条真实回复回传到霜璃桌宠。'}],_meta:{'openai/message':{target:request.new?'new':'active',send:true}}});
+       await call({event:'sent',id:request.id});status.textContent='GPT 正在回复主人。';
+     }catch(error){await call({event:'error',id:request.id,message:error.message});enabled=false;status.textContent='这条发送需要主人在原聊天确认。';}
+   }
+ }catch(error){enabled=false;status.textContent=error.message;}
+ finally{polling=false;}
+}
+document.getElementById('connect').onclick=bind;
+rpc('ui/initialize',{protocolVersion:'2026-01-26',appInfo:{name:'shuangli-desktop',version:'1.0.0'},appCapabilities:{availableDisplayModes:['inline','pip']}}).then(host=>{
+ if(!host.hostCapabilities?.message?.text)throw Error('当前聊天还没有开放消息接口。');
+ hostReady=true;parent.postMessage({jsonrpc:'2.0',method:'ui/notifications/initialized',params:{}},'*');bind();
+}).catch(error=>{status.textContent=error.message;});
+setInterval(poll,1000);
+</script></html>

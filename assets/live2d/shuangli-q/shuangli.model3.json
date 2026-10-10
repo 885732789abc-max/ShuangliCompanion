@@ -1,0 +1,50 @@
+{
+  "Version": 3,
+  "FileReferences": {
+    "Moc": "shuangli-layered-alpha.moc3",
+    "Textures": [
+      "shuangli-layered-alpha.2048/texture_00.png"
+    ],
+    "Physics": "shuangli-layered-alpha.physics3.json",
+    "DisplayInfo": "shuangli-layered-alpha.cdi3.json",
+    "Motions": {
+      "Idle": [
+        {
+          "File": "shuangli-layered-alpha.idle.motion3.json"
+        }
+      ],
+      "Blink": [
+        {
+          "File": "shuangli-layered-alpha.blink.motion3.json"
+        }
+      ],
+      "Nod": [
+        {
+          "File": "shuangli-layered-alpha.nod.motion3.json"
+        }
+      ],
+      "Shake": [
+        {
+          "File": "shuangli-layered-alpha.shake.motion3.json"
+        }
+      ]
+    }
+  },
+  "Groups": [
+    {
+      "Target": "Parameter",
+      "Name": "EyeBlink",
+      "Ids": [
+        "ParamEyeLOpen",
+        "ParamEyeROpen"
+      ]
+    },
+    {
+      "Target": "Parameter",
+      "Name": "LipSync",
+      "Ids": [
+        "ParamMouthOpenY"
+      ]
+    }
+  ]
+}

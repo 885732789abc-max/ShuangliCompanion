@@ -1,0 +1,508 @@
+{
+  "schema": 1,
+  "assets": [
+    {
+      "path": "assets/shuangli.ico",
+      "original": "user provided reference / previous Shuangli outputs",
+      "format": "ICO",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "frames": 1,
+      "action": "base/atlas",
+      "reuse": "reference-only",
+      "license": "personal existing asset; no public redistribution grant established"
+    },
+    {
+      "path": "assets/references/shuangli-approved-q-v1.png",
+      "original": "User-supplied reference artwork",
+      "format": "PNG",
+      "bytes": 823268,
+      "license": "User-supplied character artwork; original preserved.",
+      "reuse": "reference",
+      "action": "neutral pose; full posture actions still in production",
+      "width": 830,
+      "height": 1007,
+      "alpha": false
+    },
+    {
+      "path": "art/shuangli-q-v1/shuangli-exact-cutout.png",
+      "original": "User-supplied reference artwork",
+      "format": "PNG",
+      "bytes": 773577,
+      "license": "User-supplied character artwork; original preserved.",
+      "reuse": "default fallback; original pixels edited in PSD2Live",
+      "action": "neutral pose; full posture actions still in production",
+      "width": 830,
+      "height": 1007,
+      "alpha": true,
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/live2d/shuangli-q/shuangli-layered-trimmed.2048/texture_00.png",
+      "original": "User-supplied reference artwork",
+      "format": "PNG",
+      "bytes": 1741419,
+      "license": "User-supplied character artwork; original preserved.",
+      "reuse": "authoring source",
+      "action": "neutral pose; full posture actions still in production",
+      "width": 2048,
+      "height": 2048,
+      "alpha": true,
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/live2d/shuangli-q/shuangli-layered-trimmed.blink.motion3.json",
+      "original": "User-supplied reference artwork",
+      "format": "JSON",
+      "bytes": 1155,
+      "license": "User-supplied character artwork; original preserved.",
+      "reuse": "authoring source",
+      "action": "neutral pose; full posture actions still in production"
+    },
+    {
+      "path": "assets/live2d/shuangli-q/shuangli-layered-trimmed.cdi3.json",
+      "original": "User-supplied reference artwork",
+      "format": "JSON",
+      "bytes": 4609,
+      "license": "User-supplied character artwork; original preserved.",
+      "reuse": "authoring source",
+      "action": "neutral pose; full posture actions still in production"
+    },
+    {
+      "path": "assets/live2d/shuangli-q/shuangli-layered-trimmed.cmo3",
+      "original": "User-supplied reference artwork",
+      "format": "CMO3",
+      "bytes": 3847442,
+      "license": "User-supplied character artwork; original preserved.",
+      "reuse": "authoring source",
+      "action": "neutral pose; full posture actions still in production"
+    },
+    {
+      "path": "assets/live2d/shuangli-q/shuangli-layered-trimmed.idle.motion3.json",
+      "original": "User-supplied reference artwork",
+      "format": "JSON",
+      "bytes": 15999,
+      "license": "User-supplied character artwork; original preserved.",
+      "reuse": "authoring source",
+      "action": "neutral pose; full posture actions still in production"
+    },
+    {
+      "path": "assets/live2d/shuangli-q/shuangli-layered-trimmed.moc3",
+      "original": "User-supplied reference artwork",
+      "format": "MOC3",
+      "bytes": 202496,
+      "license": "User-supplied character artwork; original preserved.",
+      "reuse": "authoring source",
+      "action": "neutral pose; full posture actions still in production"
+    },
+    {
+      "path": "assets/live2d/shuangli-q/shuangli-layered-trimmed.model3.json",
+      "original": "User-supplied reference artwork",
+      "format": "JSON",
+      "bytes": 376,
+      "license": "User-supplied character artwork; original preserved.",
+      "reuse": "authoring source",
+      "action": "neutral pose; full posture actions still in production"
+    },
+    {
+      "path": "assets/live2d/shuangli-q/shuangli-layered-trimmed.nod.motion3.json",
+      "original": "User-supplied reference artwork",
+      "format": "JSON",
+      "bytes": 1751,
+      "license": "User-supplied character artwork; original preserved.",
+      "reuse": "authoring source",
+      "action": "neutral pose; full posture actions still in production"
+    },
+    {
+      "path": "assets/live2d/shuangli-q/shuangli-layered-trimmed.physics3.json",
+      "original": "User-supplied reference artwork",
+      "format": "JSON",
+      "bytes": 8581,
+      "license": "User-supplied character artwork; original preserved.",
+      "reuse": "authoring source",
+      "action": "neutral pose; full posture actions still in production"
+    },
+    {
+      "path": "assets/live2d/shuangli-q/shuangli-layered-trimmed.psd2live.json",
+      "original": "User-supplied reference artwork",
+      "format": "JSON",
+      "bytes": 6445,
+      "license": "User-supplied character artwork; original preserved.",
+      "reuse": "authoring source",
+      "action": "neutral pose; full posture actions still in production"
+    },
+    {
+      "path": "assets/live2d/shuangli-q/shuangli-layered-trimmed.shake.motion3.json",
+      "original": "User-supplied reference artwork",
+      "format": "JSON",
+      "bytes": 1573,
+      "license": "User-supplied character artwork; original preserved.",
+      "reuse": "authoring source",
+      "action": "neutral pose; full posture actions still in production"
+    },
+    {
+      "path": "assets/live2d/shuangli-q/shuangli.model3.json",
+      "format": "JSON",
+      "bytes": 1044,
+      "original": "art/shuangli-q-v1/shuangli-layered-alpha.psd",
+      "reuse": "Original alpha layers; root-pinned idle bindings",
+      "action": "idle, random wing/tail/hair gestures, eye expressions",
+      "license": "User-supplied character artwork; original preserved."
+    },
+    {
+      "path": "art/shuangli-q-v1/shuangli-layered-alpha.psd",
+      "original": "User-supplied reference artwork",
+      "format": "PSD",
+      "bytes": 4640098,
+      "license": "User-supplied character artwork; original preserved.",
+      "reuse": "authoring source",
+      "action": "neutral pose; full posture actions still in production"
+    },
+    {
+      "path": "assets/live2d/shuangli-q/shuangli-layered-alpha.2048/texture_00.png",
+      "format": "PNG",
+      "bytes": 985682,
+      "original": "art/shuangli-q-v1/shuangli-layered-alpha.psd",
+      "reuse": "Original alpha layers; root-pinned idle bindings",
+      "action": "idle, random wing/tail/hair gestures, eye expressions",
+      "license": "User-supplied character artwork; original preserved.",
+      "width": 2048,
+      "height": 2048,
+      "alpha": true
+    },
+    {
+      "path": "assets/live2d/shuangli-q/shuangli-layered-alpha.blink.motion3.json",
+      "format": "JSON",
+      "bytes": 1155,
+      "original": "art/shuangli-q-v1/shuangli-layered-alpha.psd",
+      "reuse": "Original alpha layers; root-pinned idle bindings",
+      "action": "idle, random wing/tail/hair gestures, eye expressions",
+      "license": "User-supplied character artwork; original preserved."
+    },
+    {
+      "path": "assets/live2d/shuangli-q/shuangli-layered-alpha.cdi3.json",
+      "format": "JSON",
+      "bytes": 4855,
+      "original": "art/shuangli-q-v1/shuangli-layered-alpha.psd",
+      "reuse": "Original alpha layers; root-pinned idle bindings",
+      "action": "idle, random wing/tail/hair gestures, eye expressions",
+      "license": "User-supplied character artwork; original preserved."
+    },
+    {
+      "path": "assets/live2d/shuangli-q/shuangli-layered-alpha.idle.motion3.json",
+      "format": "JSON",
+      "bytes": 15999,
+      "original": "art/shuangli-q-v1/shuangli-layered-alpha.psd",
+      "reuse": "Original alpha layers; root-pinned idle bindings",
+      "action": "idle, random wing/tail/hair gestures, eye expressions",
+      "license": "User-supplied character artwork; original preserved."
+    },
+    {
+      "path": "assets/live2d/shuangli-q/shuangli-layered-alpha.moc3",
+      "format": "MOC3",
+      "bytes": 231488,
+      "original": "art/shuangli-q-v1/shuangli-layered-alpha.psd",
+      "reuse": "Original alpha layers; root-pinned idle bindings",
+      "action": "idle, random wing/tail/hair gestures, eye expressions",
+      "license": "User-supplied character artwork; original preserved."
+    },
+    {
+      "path": "assets/live2d/shuangli-q/shuangli-layered-alpha.model3.json",
+      "format": "JSON",
+      "bytes": 853,
+      "original": "art/shuangli-q-v1/shuangli-layered-alpha.psd",
+      "reuse": "Original alpha layers; root-pinned idle bindings",
+      "action": "idle, random wing/tail/hair gestures, eye expressions",
+      "license": "User-supplied character artwork; original preserved."
+    },
+    {
+      "path": "assets/live2d/shuangli-q/shuangli-layered-alpha.nod.motion3.json",
+      "format": "JSON",
+      "bytes": 1751,
+      "original": "art/shuangli-q-v1/shuangli-layered-alpha.psd",
+      "reuse": "Original alpha layers; root-pinned idle bindings",
+      "action": "idle, random wing/tail/hair gestures, eye expressions",
+      "license": "User-supplied character artwork; original preserved."
+    },
+    {
+      "path": "assets/live2d/shuangli-q/shuangli-layered-alpha.physics3.json",
+      "format": "JSON",
+      "bytes": 8581,
+      "original": "art/shuangli-q-v1/shuangli-layered-alpha.psd",
+      "reuse": "Original alpha layers; root-pinned idle bindings",
+      "action": "idle, random wing/tail/hair gestures, eye expressions",
+      "license": "User-supplied character artwork; original preserved."
+    },
+    {
+      "path": "assets/live2d/shuangli-q/shuangli-layered-alpha.shake.motion3.json",
+      "format": "JSON",
+      "bytes": 1573,
+      "original": "art/shuangli-q-v1/shuangli-layered-alpha.psd",
+      "reuse": "Original alpha layers; root-pinned idle bindings",
+      "action": "idle, random wing/tail/hair gestures, eye expressions",
+      "license": "User-supplied character artwork; original preserved."
+    },
+    {
+      "path": "assets/poses/shuangli-q/sit-v1.png",
+      "format": "PNG",
+      "width": 1139,
+      "height": 1381,
+      "alpha": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "frames": 1,
+      "actions": [
+        "sit",
+        "drowsy"
+      ],
+      "reuse": "Identity-preserving 2D pose derived from approved Q reference with built-in imagegen; decoded lazily at at most 640px",
+      "reference": "assets/references/shuangli-approved-q-v1.png"
+    },
+    {
+      "path": "assets/poses/shuangli-q/sleep-v1.png",
+      "format": "PNG",
+      "width": 1139,
+      "height": 1381,
+      "alpha": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "frames": 1,
+      "actions": [
+        "sleep",
+        "sleepy_nod"
+      ],
+      "reuse": "Identity-preserving 2D pose derived from approved Q reference with built-in imagegen; decoded lazily at at most 640px",
+      "reference": "assets/references/shuangli-approved-q-v1.png"
+    },
+    {
+      "path": "assets/poses/shuangli-q/stretch-v1.png",
+      "format": "PNG",
+      "width": 1139,
+      "height": 1381,
+      "alpha": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "frames": 1,
+      "actions": [
+        "stretch"
+      ],
+      "reuse": "Identity-preserving 2D pose derived from approved Q reference with built-in imagegen; decoded lazily at at most 640px",
+      "reference": "assets/references/shuangli-approved-q-v1.png"
+    },
+    {
+      "path": "assets/approved-q/shuangli-exact-cutout.png",
+      "format": "PNG",
+      "width": 830,
+      "height": 1007,
+      "alpha": true,
+      "frames": 1,
+      "reuse": "Approved original transparent artwork shared by runtime eye and wing/tail expression clips",
+      "actions": [
+        "idle",
+        "walk",
+        "working",
+        "happy",
+        "hurt",
+        "curious",
+        "drag",
+        "land",
+        "notice",
+        "look_around",
+        "content",
+        "blink_slow",
+        "yawn",
+        "wake_up",
+        "pat",
+        "edge_peek",
+        "shy",
+        "startled",
+        "wing_adjust",
+        "tail_flick",
+        "fall",
+        "glance_away",
+        "head_tilt",
+        "attentive",
+        "daydream",
+        "bashful_smile",
+        "double_blink",
+        "perk_up",
+        "relieved",
+        "settle"
+      ]
+    },
+    {
+      "path": "assets/live2d/shuangli-q/face-backing.png",
+      "format": "PNG",
+      "bytes": 19419,
+      "original": "art/shuangli-q-v1/shuangli-layered-alpha.psd",
+      "reuse": "Original alpha layers; root-pinned idle bindings",
+      "action": "idle, random wing/tail/hair gestures, eye expressions",
+      "license": "User-supplied character artwork; original preserved.",
+      "width": 286,
+      "height": 198,
+      "alpha": true
+    },
+    {
+      "path": "assets/poses/shuangli-q/memes/meme_shock-v1.png",
+      "format": "PNG",
+      "width": 640,
+      "height": 700,
+      "alpha": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "frames": 1,
+      "action": "meme_shock",
+      "reuse": "natural event reaction",
+      "original": "art/shuangli-memes/expressions-sheet-v1.png",
+      "reference": "assets/references/shuangli-approved-q-v1.png",
+      "generator": "built-in imagegen"
+    },
+    {
+      "path": "assets/poses/shuangli-q/memes/meme_smug-v1.png",
+      "format": "PNG",
+      "width": 640,
+      "height": 700,
+      "alpha": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "frames": 1,
+      "action": "meme_smug",
+      "reuse": "natural event reaction",
+      "original": "art/shuangli-memes/expressions-sheet-v1.png",
+      "reference": "assets/references/shuangli-approved-q-v1.png",
+      "generator": "built-in imagegen"
+    },
+    {
+      "path": "assets/poses/shuangli-q/memes/meme_pout-v1.png",
+      "format": "PNG",
+      "width": 640,
+      "height": 700,
+      "alpha": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "frames": 1,
+      "action": "meme_pout",
+      "reuse": "natural event reaction",
+      "original": "art/shuangli-memes/expressions-sheet-v1.png",
+      "reference": "assets/references/shuangli-approved-q-v1.png",
+      "generator": "built-in imagegen"
+    },
+    {
+      "path": "assets/poses/shuangli-q/memes/meme_tears-v1.png",
+      "format": "PNG",
+      "width": 640,
+      "height": 700,
+      "alpha": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "frames": 1,
+      "action": "meme_tears",
+      "reuse": "natural event reaction",
+      "original": "art/shuangli-memes/expressions-sheet-v1.png",
+      "reference": "assets/references/shuangli-approved-q-v1.png",
+      "generator": "built-in imagegen"
+    },
+    {
+      "path": "assets/poses/shuangli-q/memes/meme_dizzy-v1.png",
+      "format": "PNG",
+      "width": 640,
+      "height": 700,
+      "alpha": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "frames": 1,
+      "action": "meme_dizzy",
+      "reuse": "natural event reaction",
+      "original": "art/shuangli-memes/expressions-sheet-v1.png",
+      "reference": "assets/references/shuangli-approved-q-v1.png",
+      "generator": "built-in imagegen"
+    },
+    {
+      "path": "assets/poses/shuangli-q/memes/meme_flop-v1.png",
+      "format": "PNG",
+      "width": 640,
+      "height": 700,
+      "alpha": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "frames": 1,
+      "action": "meme_flop",
+      "reuse": "natural event reaction",
+      "original": "art/shuangli-memes/expressions-sheet-v1.png",
+      "reference": "assets/references/shuangli-approved-q-v1.png",
+      "generator": "built-in imagegen"
+    },
+    {
+      "path": "assets/live2d/shuangli-q/idle-rig.json",
+      "format": "JSON",
+      "bytes": 214,
+      "original": "art/shuangli-q-v1/shuangli-layered-alpha.psd",
+      "reuse": "Original alpha layers; root-pinned idle bindings",
+      "action": "idle, random wing/tail/hair gestures, eye expressions",
+      "license": "User-supplied character artwork; original preserved."
+    },
+    {
+      "path": "assets/live2d/shuangli-q/neutral-backing.png",
+      "format": "PNG",
+      "bytes": 638890,
+      "original": "art/shuangli-q-v1/shuangli-layered-alpha.psd",
+      "reuse": "Original alpha layers; root-pinned idle bindings",
+      "action": "idle, random wing/tail/hair gestures, eye expressions",
+      "license": "User-supplied character artwork; original preserved.",
+      "width": 830,
+      "height": 1007,
+      "alpha": true
+    },
+    {
+      "path": "assets/live2d/shuangli-q/shuangli-layered-alpha.cmo3",
+      "format": "CMO3",
+      "bytes": 2319489,
+      "original": "art/shuangli-q-v1/shuangli-layered-alpha.psd",
+      "reuse": "Original alpha layers; root-pinned idle bindings",
+      "action": "idle, random wing/tail/hair gestures, eye expressions",
+      "license": "User-supplied character artwork; original preserved."
+    },
+    {
+      "path": "assets/live2d/shuangli-q/shuangli-layered-alpha.psd2live.json",
+      "format": "JSON",
+      "bytes": 9065,
+      "original": "art/shuangli-q-v1/shuangli-layered-alpha.psd",
+      "reuse": "Original alpha layers; root-pinned idle bindings",
+      "action": "idle, random wing/tail/hair gestures, eye expressions",
+      "license": "User-supplied character artwork; original preserved."
+    }
+  ],
+  "live2d_models_found": [],
+  "active_reference": "assets/references/shuangli-approved-q-v1.png",
+  "active_fallback": "assets/approved-q/shuangli-exact-cutout.png",
+  "authoring_tool": "PSD2Live 3.1.1, official upstream portable distribution, local authenticated MCP"
+}

@@ -1,0 +1,20 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "shuangli-layered-trimmed.moc3",
+		"Textures": [
+			"shuangli-layered-trimmed.2048/texture_00.png"
+		],
+		"Physics": "shuangli-layered-trimmed.physics3.json",
+		"DisplayInfo": "shuangli-layered-trimmed.cdi3.json"
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "LipSync",
+			"Ids": [
+				"ParamMouthOpenY"
+			]
+		}
+	]
+}
