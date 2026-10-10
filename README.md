@@ -2,6 +2,10 @@
 
 > **推荐让熟悉 Windows 与 ChatGPT 配置的 Agent 帮忙安装和连接。** 把本仓库地址与 [启动与连接指南](docs/连接与启动.md) 发给 Agent，让它在下载者自己的电脑上完成依赖、构建、本机插件和隧道配置；密钥只在下载者本机输入。
 
+<p align="center">
+  <img src="assets/references/shuangli-approved-q-v1.png" alt="霜璃 Q 版角色形象" width="360">
+</p>
+
 霜璃是 Windows 11 上的透明桌面小龙娘。她会跟随、闲逛、休息，回应抚摸与拖拽；桌面输入条和气泡可以接入下载者自己的 ChatGPT 聊天。角色和界面在离线状态也可使用。
 
 ## 获取与启动
