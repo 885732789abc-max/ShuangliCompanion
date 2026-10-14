@@ -77,6 +77,13 @@ def main():
                     destination.parent.mkdir(parents=True,exist_ok=True)
                     temporary=destination.with_name(destination.name+'.update')
                     shutil.copy2(source,temporary);os.replace(temporary,destination)
+                package_root=target.resolve()
+                for name in ('extension','ShuangliBridgeHost.exe'):
+                    obsolete=(package_root/name).resolve()
+                    if obsolete.parent!=package_root:
+                        raise RuntimeError('Invalid package cleanup path')
+                    if obsolete.is_dir():shutil.rmtree(obsolete)
+                    else:obsolete.unlink(missing_ok=True)
             print(f'Packaging exit: {code.value}', flush=True)
             return code.value
     finally:

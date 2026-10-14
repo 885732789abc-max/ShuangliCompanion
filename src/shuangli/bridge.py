@@ -111,8 +111,8 @@ class ChatGPTLauncher(ConversationBridge):
         return False
 
 
-class AuthorizedWebBridge(ConversationBridge):
-    """Authenticated native transport for desktop MCP App or optional DOM host."""
+class DesktopConversationBridge(ConversationBridge):
+    """Authenticated local transport exclusively for the desktop MCP App."""
     def __init__(self, config):
         super().__init__(config)
         self.events = queue.Queue(maxsize=128)
@@ -135,24 +135,20 @@ class AuthorizedWebBridge(ConversationBridge):
         self.uncertain = False
         self.desktop=self.config['chat_target']=='desktop'
         self.desktop_binding=''
-        if not self.desktop and not self.config['bridge_enabled']:
-            detail='GPT 桌面入口 · 草稿待发送' if self.config['chat_target']=='desktop' else '原会话入口 · 网页桥接未启用'
-            self.set_state(ChatState.DISCONNECTED, detail)
-            return
-        if not self.desktop and not re.fullmatch('[a-p]{32}',self.config['extension_id']):
-            self.set_state(ChatState.DISCONNECTED, '主人还未登记浏览器扩展。')
+        if not self.desktop:
+            self.set_state(ChatState.DISCONNECTED, '原会话入口 · 草稿待发送')
             return
         self.generation += 1
         generation = self.generation
         self.key = secrets.token_urlsafe(48)
-        self.origin='shuangli-desktop-plugin' if self.desktop else f'chrome-extension://{self.config["extension_id"]}/'
+        self.origin='shuangli-desktop-plugin'
         listener = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
         listener.bind(('127.0.0.1',0)); listener.listen(2); listener.settimeout(1)
         self.listener = listener
         atomic_json(DATA/'bridge-session.json',dict(port=listener.getsockname()[1],
                     pairing_key=protect(self.key), origin=self.origin))
         threading.Thread(target=self.accept, args=(listener,generation), daemon=True).start()
-        self.set_state(ChatState.DISCONNECTED,'等待 GPT 桌面聊天打开霜璃插件' if self.desktop else '等待主人在 ChatGPT 页面点“绑定此会话”。')
+        self.set_state(ChatState.DISCONNECTED,'等待 GPT 桌面聊天打开霜璃插件')
 
     def put_event(self, value):
         try: self.events.put_nowait(value)
@@ -178,7 +174,7 @@ class AuthorizedWebBridge(ConversationBridge):
                     if generation != self.generation or self.client is not None: return
                     self.client = client
                 client.settimeout(35)
-                client.sendall(encode(dict(type='target',url=self.desktop_binding if self.desktop else conversation_url(self.config['conversation_url']))))
+                client.sendall(encode(dict(type='target',url=self.desktop_binding)))
                 while generation == self.generation:
                     event = read_message(stream)
                     if event.get('type') in ('heartbeat','snapshot','status','reply','sent','error','bound','unbind'):
@@ -201,16 +197,16 @@ class AuthorizedWebBridge(ConversationBridge):
     def send(self, text, new=False):
         text = text.strip()
         if not text or len(text)>20000: return False
-        if not self.ready or self.pending or self.uncertain or self.state == ChatState.GENERATING:
-            self.set_state(ChatState.FAILED,'连接未准备好，或上一条发送结果需要主人回原页面确认。')
+        if not self.desktop or not self.ready or self.pending or self.uncertain or self.state == ChatState.GENERATING:
+            self.set_state(ChatState.FAILED,'连接未准备好，或上一条发送结果需要主人回原会话确认。')
             return False
         request = uuid.uuid4().hex
         self.pending = dict(id=request,text=text,start=time.monotonic(),observed=False)
-        if not self.command(dict(type='send',id=request,text=text,new=new,url=self.desktop_binding if self.desktop else conversation_url(self.config['conversation_url']))):
+        if not self.command(dict(type='send',id=request,text=text,new=new,url=self.desktop_binding)):
             self.pending = None; self.ready=False
-            self.set_state(ChatState.DISCONNECTED,'网页连接已断开；草稿保留在这里。')
+            self.set_state(ChatState.DISCONNECTED,'桌面插件连接已断开；草稿保留在这里。')
             return False
-        self.set_state(ChatState.SENDING,'等待原页面确认消息。')
+        self.set_state(ChatState.SENDING,'等待桌面聊天确认消息。')
         return True
 
     def poll(self):
@@ -224,20 +220,19 @@ class AuthorizedWebBridge(ConversationBridge):
                 self.ready = False
                 if self.pending: self.uncertain=True
                 self.pending = None
-                self.set_state(ChatState.DISCONNECTED,'网页连接已断开，请回原会话确认最后一条消息。')
+                self.set_state(ChatState.DISCONNECTED,'桌面插件连接已断开，请回原会话确认最后一条消息。')
                 continue
             if kind == 'heartbeat':
                 self.last_seen = now
                 continue
             raw=event.get('url','')
-            url = raw if self.desktop and isinstance(raw,str) and re.fullmatch(r'desktop://[0-9a-f]{32}',raw) else conversation_url(raw)
-            target = self.desktop_binding if self.desktop else conversation_url(self.config['conversation_url'])
+            url = raw if self.desktop and isinstance(raw,str) and re.fullmatch(r'desktop://[0-9a-f]{32}',raw) else ''
+            target = self.desktop_binding
             if kind == 'bound' and url:
-                # Binding occurs only after the user clicks in the extension popup.
+                # Only a desktop MCP App binding can select the conversation.
                 if self.pending:
-                    self.set_state(ChatState.FAILED,'请先在原页面确认当前发送，再切换会话。'); continue
-                if self.desktop:self.desktop_binding=url
-                else:self.config['conversation_url']=url; self.config.save()
+                    self.set_state(ChatState.FAILED,'请先在原会话确认当前发送，再切换会话。'); continue
+                self.desktop_binding=url
                 self.uncertain=False
                 self.command(dict(type='target',url=url))
                 target = url
@@ -256,10 +251,10 @@ class AuthorizedWebBridge(ConversationBridge):
                 self.ready = bool(event.get('compatible'))
                 observed = event.get('state')
                 if not self.ready:
-                    self.set_state(ChatState.FAILED,'原页面控件不兼容，请打开完整会话继续。')
-                elif observed == 'generating': self.set_state(ChatState.GENERATING,'原页面正在生成回复。')
+                    self.set_state(ChatState.FAILED,'桌面插件未准备好，请打开聊天继续。')
+                elif observed == 'generating': self.set_state(ChatState.GENERATING,'桌面聊天正在生成回复。')
                 elif observed == 'idle' and not self.pending:
-                    self.set_state(ChatState.IDLE,'已连接 GPT 桌面聊天 · MCP App' if self.desktop else '已连接主人授权的原会话 · 非官方网页桥接')
+                    self.set_state(ChatState.IDLE,'已连接 GPT 桌面聊天 · MCP App')
             elif kind == 'sent' and self.pending and event.get('id') == self.pending['id']:
                 self.pending['observed']=True
                 self.request_observed.emit(self.pending['id'], self.pending['text'])
@@ -270,15 +265,15 @@ class AuthorizedWebBridge(ConversationBridge):
                 self.reply.emit(ident,text[:100000],done)
                 if done:
                     self.pending=None; self.uncertain=False
-                    self.set_state(ChatState.COMPLETED,'原页面已显示完成的回复。')
+                    self.set_state(ChatState.COMPLETED,'桌面聊天已回传完成的回复。')
             elif kind == 'error':
                 uncertain=event.get('uncertain') is True
                 self.uncertain |= uncertain
                 self.pending=None
-                self.set_state(ChatState.FAILED,str(event.get('message','网页操作失败。'))[:250])
+                self.set_state(ChatState.FAILED,str(event.get('message','桌面插件操作失败。'))[:250])
         if self.ready and self.last_seen and now-self.last_seen>30:
             self.ready=False
-            self.set_state(ChatState.DISCONNECTED,'原页面暂时没有回应；请打开会话检查。')
+            self.set_state(ChatState.DISCONNECTED,'桌面插件暂时没有回应；请打开会话检查。')
         if self.pending and now-self.pending['start']>120 and not self.pending['observed']:
             self.pending=None; self.uncertain=True
             self.set_state(ChatState.FAILED,'发送结果未确认；请检查原会话，不会自动重发。')
@@ -289,7 +284,7 @@ class AuthorizedWebBridge(ConversationBridge):
     def resolve_uncertain(self):
         self.uncertain=False; self.pending=None
         self.set_state(ChatState.IDLE if self.ready else ChatState.DISCONNECTED,
-                       '主人已检查原页面，下一条会使用新的发送编号。')
+                       '主人已检查原会话，下一条会使用新的发送编号。')
 
     def stop(self):
         self.generation+=1

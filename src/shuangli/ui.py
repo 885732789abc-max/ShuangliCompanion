@@ -16,7 +16,7 @@ from PySide6.QtWidgets import (QApplication,QWidget,QDialog,QVBoxLayout,QHBoxLay
 
 from .config import ROOT,HOME,DATA
 from .bridge import ChatState,OfficialIntegration,conversation_url,DesktopChatGPTLauncher
-from .installation import install_host,uninstall_host
+from .installation import uninstall_host
 from .platform_win import startup
 from .plugins import import_pack
 
@@ -321,13 +321,9 @@ class Settings(QDialog):
         desktop_plugin=QPushButton('打开霜璃桌宠插件');desktop_plugin.clicked.connect(open_desktop_plugin);forms['聊天连接'].addRow(desktop_plugin)
         desktop_note=QLabel('在 Chat 里打开霜璃插件的连接面板。连上后，脚下输入，头顶看回答。')
         desktop_note.setWordWrap(True);forms['聊天连接'].addRow(desktop_note)
-        self.check(forms['聊天连接'],'bridge_enabled','启用授权网页桥接（可选）')
-        self.line(forms['聊天连接'],'extension_id','扩展编号')
-        help_label=QLabel('以下为可选浏览器组件；GPT 桌面聊天使用上面的霜璃插件。')
-        help_label.setWordWrap(True);help_label.setObjectName('subtitle');forms['聊天连接'].addRow(help_label)
-        folder=QPushButton('打开扩展文件夹');folder.clicked.connect(lambda:QDesktopServices.openUrl(QUrl.fromLocalFile(str(HOME/'extension'))));forms['聊天连接'].addRow(folder)
-        registration=QPushButton('登记到当前用户的 Chrome / Edge');registration.clicked.connect(self.register_host);forms['聊天连接'].addRow(registration)
-        uninstall=QPushButton('移除本程序的桥接登记');uninstall.clicked.connect(self.unregister_host);forms['聊天连接'].addRow(uninstall)
+        browser_note=QLabel('浏览器入口只打开原会话，草稿由主人在页面中发送。')
+        browser_note.setWordWrap(True);forms['聊天连接'].addRow(browser_note)
+        uninstall=QPushButton('清理旧浏览器桥接登记');uninstall.clicked.connect(self.unregister_host);forms['聊天连接'].addRow(uninstall)
         official=QLabel('官方集成：'+OfficialIntegration.reason);official.setWordWrap(True);official.setObjectName('subtitle');forms['聊天连接'].addRow(official)
         self.number(forms['通知'],'reminder_minutes','休息提醒（分钟，0 关闭）',0,240,5,True)
         hint=QLabel('提醒默认为关闭。只提醒，不自动打开录音。');hint.setObjectName('subtitle');forms['通知'].addRow(hint)
@@ -338,14 +334,14 @@ class Settings(QDialog):
         self.todo_input=QLineEdit();self.todo_input.setPlaceholderText('给主人记一件事');forms['通知'].addRow(self.todo_input)
         row=QHBoxLayout();add=QPushButton('记下');add.clicked.connect(lambda:self.add_todo(self.todo_input.text()));row.addWidget(add)
         remove=QPushButton('删掉所选');remove.clicked.connect(lambda:self.todo.takeItem(self.todo.currentRow()));row.addWidget(remove);forms['通知'].addRow(row)
-        privacy=QLabel('设置、位置、触摸状态与待办只存在本机。\n聊天面板仅在内存中显示网页传来的消息，退出后不留聊天副本。\n不读取 Cookie、Token、隐藏推理、桌面截图或窗口标题。\n本机桥接只监听 127.0.0.1，使用每次启动更新的本机配对密钥。\n语音接口留待主人主动安装和启用。')
+        privacy=QLabel('设置、位置、触摸状态与待办只存在本机。\n聊天面板仅在内存中显示桌面插件回传的消息，退出后不留聊天副本。\n不读取 Cookie、Token、隐藏推理、桌面截图或窗口标题。\n本机桥接只监听 127.0.0.1，使用每次启动更新的本机配对密钥。\n语音接口留待主人主动安装和启用。')
         privacy.setWordWrap(True);forms['隐私'].addRow(privacy)
         data=QPushButton('打开本地设置目录');data.clicked.connect(lambda:QDesktopServices.openUrl(QUrl.fromLocalFile(str(DATA))));forms['隐私'].addRow(data)
         clear=QPushButton('清空本地待办和互动状态');clear.clicked.connect(self.clear_local);forms['隐私'].addRow(clear)
         self.line(forms['快捷键'],'hotkey_show','显示 / 解除穿透')
         self.line(forms['快捷键'],'hotkey_chat','打开聊天')
         self.check(forms['启动'],'startup','随 Windows 登录启动')
-        desc=QLabel('便携程序，不需要管理员权限。\n移除桥接登记并关闭开机启动后，可以直接移走程序目录。');desc.setWordWrap(True);forms['启动'].addRow(desc)
+        desc=QLabel('便携程序，不需要管理员权限。\n关闭开机启动后，可以直接移走程序目录。');desc.setWordWrap(True);forms['启动'].addRow(desc)
         self.feedback=QLabel();self.feedback.setWordWrap(True);self.feedback.setObjectName('subtitle');root.addWidget(self.feedback)
         bottom=QHBoxLayout();bottom.addStretch();close=QPushButton('收起');close.clicked.connect(self.hide);bottom.addWidget(close)
         save=QPushButton('保存');save.setObjectName('primary');save.clicked.connect(self.save);bottom.addWidget(save);root.addLayout(bottom)
@@ -369,16 +365,9 @@ class Settings(QDialog):
             try:
                 name=import_pack(file);self.controls['pack'].addItem(name,name);self.controls['pack'].setCurrentIndex(self.controls['pack'].findData(name));self.feedback.setText('皮肤已保存在本机，保存后应用。')
             except Exception as e:self.feedback.setText(str(e))
-    def register_host(self):
-        try:
-            ident=self.controls['extension_id'].text().strip();install_host(ident)
-            self.config['extension_id']=ident;self.config['bridge_enabled']=True;self.config.save()
-            self.controls['bridge_enabled'].setChecked(True)
-            self.bridge.start();self.feedback.setText('已登记本机桥接。主人可以去原会话绑定这一页了。')
-        except Exception as e:self.feedback.setText(str(e))
     def unregister_host(self):
         try:
-            self.bridge.stop();uninstall_host();self.config['bridge_enabled']=False;self.config.save();self.controls['bridge_enabled'].setChecked(False);self.feedback.setText('本程序的桥接登记已移除。')
+            uninstall_host();self.feedback.setText('旧浏览器桥接登记已清理。')
         except Exception as e:self.feedback.setText(str(e))
     def add_todo(self,text,done=False):
         text=str(text).strip()[:500]
@@ -396,13 +385,11 @@ class Settings(QDialog):
             else:values[key]=control.value()
         if values['conversation_url'] and not conversation_url(values['conversation_url']):
             self.feedback.setText('请给主人填入 https://chatgpt.com/c/… 的已有会话链接。');return
-        if values['bridge_enabled'] and not __import__('re').fullmatch('[a-p]{32}',values['extension_id']):
-            self.feedback.setText('桥接还需要有效的浏览器扩展编号。');return
         if values['startup']!=self.config['startup']:
             if not getattr(sys,'frozen',False):self.feedback.setText('开机启动请在打包后的程序中设置。');return
             try:startup(values['startup'],sys.executable)
             except OSError as e:self.feedback.setText(str(e));return
-        reconnect=any(values[k]!=self.config[k] for k in ('bridge_enabled','extension_id','conversation_url','chat_target'))
+        reconnect=any(values[k]!=self.config[k] for k in ('conversation_url','chat_target'))
         self.config.values.update(values)
         self.config['todos']=[dict(text=self.todo.item(i).text(),done=self.todo.item(i).checkState()==Qt.CheckState.Checked) for i in range(self.todo.count())]
         try:

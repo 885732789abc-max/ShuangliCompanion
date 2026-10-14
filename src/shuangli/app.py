@@ -12,7 +12,7 @@ from PySide6.QtNetwork import QLocalServer,QLocalSocket
 from PySide6.QtWidgets import QApplication,QSystemTrayIcon,QMessageBox
 
 from .config import Config,ROOT,DATA,setup_logging
-from .bridge import AuthorizedWebBridge
+from .bridge import DesktopConversationBridge
 from .pet import Pet
 from .platform_win import Hotkeys
 from .ui import ChatPanel,Settings
@@ -22,7 +22,7 @@ from .plugins import PluginRegistry
 class Application:
     def __init__(self,app):
         self.app=app;self.config=Config()
-        self.bridge=AuthorizedWebBridge(self.config)
+        self.bridge=DesktopConversationBridge(self.config)
         self.pet=Pet(self.config,self.bridge)
         self.settings=Settings(self.config,self.bridge)
         self.chat=ChatPanel(self.bridge,self.show_settings)

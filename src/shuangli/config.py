@@ -13,7 +13,7 @@ DATA = HOME / 'data'
 DEFAULTS = dict(scale=1.0, opacity=1.0, mode='fixed', topmost=True,
                 click_through=False, gravity=True, window_standing=True,
                 quiet=True, reminder_minutes=0, fps=30, x=None, y=None,
-                conversation_url='', bridge_enabled=False, extension_id='',
+                conversation_url='',
                 chat_target='desktop',
                 browser='edge', startup=False, chat_on_single=False,
                 hotkey_show='Ctrl+Alt+Shift+D', hotkey_chat='Ctrl+Alt+Shift+C',
@@ -57,7 +57,7 @@ class Config:
         if self.values['mode'] not in ('fixed', 'follow', 'roam'):
             self.values['mode'] = 'fixed'
         if self.values['chat_target'] not in ('desktop','browser'):self.values['chat_target']='desktop'
-        for k in ('conversation_url', 'extension_id', 'live2d_path', 'pack'):
+        for k in ('conversation_url', 'live2d_path', 'pack'):
             if not isinstance(self.values[k], str): self.values[k] = DEFAULTS[k]
         if not isinstance(self.values['todos'], list): self.values['todos'] = []
 

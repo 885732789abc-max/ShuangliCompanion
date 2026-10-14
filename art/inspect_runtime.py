@@ -5,13 +5,13 @@ ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'src'))
 from PySide6.QtCore import QTimer,Qt
 from PySide6.QtWidgets import QApplication
 from shuangli.config import Config
-from shuangli.bridge import AuthorizedWebBridge
+from shuangli.bridge import DesktopConversationBridge
 from shuangli.pet import Pet
 app=QApplication([])
 config=Config();config.values.update(renderer='live2d',live2d_path=str(ROOT/'assets/live2d/shuangli-q-clean/shuangli-layered-alpha.model3.json'),x=600,y=250,
-    gravity=False,window_standing=False,mode='fixed',fps=30,bridge_enabled=False)
+    gravity=False,window_standing=False,mode='fixed',fps=30)
 config.save=lambda:None
-bridge=AuthorizedWebBridge(config)
+bridge=DesktopConversationBridge(config)
 pet=Pet(config,bridge)
 pet.setWindowFlag(Qt.WindowType.Tool,False);pet.setWindowFlag(Qt.WindowType.Window,True)
 pet.setWindowTitle('霜璃 · 实际渲染检查');pet.show()
