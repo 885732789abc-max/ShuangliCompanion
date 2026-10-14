@@ -18,7 +18,7 @@
 
 原聊天连接使用本机 `desktop_mcp.py`、OpenAI Secure MCP Tunnel 和 ChatGPT 中下载者自己登记的 MCP 插件。每位下载者需要自己的 ChatGPT/Platform 账户、隧道和运行密钥。本项目不附带账户、密钥或会话。连接步骤见 [桌面聊天插件](docs/桌面聊天插件.md)。未连接时可以保留草稿并打开 ChatGPT。
 
-浏览器入口仅打开原会话，由用户在页面中发送。程序不提供网页自动发送、聊天抓取或浏览器扩展；旧配置中的 `bridge_enabled` 和 `extension_id` 会被忽略。
+浏览器入口仅打开原会话，由用户在页面中发送。
 
 ## 目录
 

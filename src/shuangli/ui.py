@@ -16,7 +16,6 @@ from PySide6.QtWidgets import (QApplication,QWidget,QDialog,QVBoxLayout,QHBoxLay
 
 from .config import ROOT,HOME,DATA
 from .bridge import ChatState,OfficialIntegration,conversation_url,DesktopChatGPTLauncher
-from .installation import uninstall_host
 from .platform_win import startup
 from .plugins import import_pack
 
@@ -323,7 +322,6 @@ class Settings(QDialog):
         desktop_note.setWordWrap(True);forms['聊天连接'].addRow(desktop_note)
         browser_note=QLabel('浏览器入口只打开原会话，草稿由主人在页面中发送。')
         browser_note.setWordWrap(True);forms['聊天连接'].addRow(browser_note)
-        uninstall=QPushButton('清理旧浏览器桥接登记');uninstall.clicked.connect(self.unregister_host);forms['聊天连接'].addRow(uninstall)
         official=QLabel('官方集成：'+OfficialIntegration.reason);official.setWordWrap(True);official.setObjectName('subtitle');forms['聊天连接'].addRow(official)
         self.number(forms['通知'],'reminder_minutes','休息提醒（分钟，0 关闭）',0,240,5,True)
         hint=QLabel('提醒默认为关闭。只提醒，不自动打开录音。');hint.setObjectName('subtitle');forms['通知'].addRow(hint)
@@ -365,10 +363,6 @@ class Settings(QDialog):
             try:
                 name=import_pack(file);self.controls['pack'].addItem(name,name);self.controls['pack'].setCurrentIndex(self.controls['pack'].findData(name));self.feedback.setText('皮肤已保存在本机，保存后应用。')
             except Exception as e:self.feedback.setText(str(e))
-    def unregister_host(self):
-        try:
-            uninstall_host();self.feedback.setText('旧浏览器桥接登记已清理。')
-        except Exception as e:self.feedback.setText(str(e))
     def add_todo(self,text,done=False):
         text=str(text).strip()[:500]
         if not text:return

@@ -9,6 +9,7 @@ saved=ast.literal_eval((root/'build/ShuangliCompanion/Analysis-00.toc').read_tex
 if saved[12]!=sys.version:
     raise RuntimeError('Cached analysis uses a different Python runtime; use a full build.')
 pure=list(saved[14])
+pure=[entry for entry in pure if not entry[0].startswith('shuangli.') or Path(entry[1]).is_file()]
 required={'random','collections','shuangli','shuangli.pet','shuangli.live2d_view'}
 if not required.issubset({entry[0] for entry in pure + list(saved[-1])}):
     raise RuntimeError('Cached dependencies are incomplete; use a full build.')

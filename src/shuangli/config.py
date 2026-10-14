@@ -38,12 +38,14 @@ class Config:
         self.path = DATA / 'settings.json'
         self.values = DEFAULTS.copy()
         self.problem = ''
+        prune_saved = False
         if self.path.exists():
             try:
                 saved = json.loads(self.path.read_text(encoding='utf-8'))
                 if not isinstance(saved, dict):
                     raise ValueError('settings must be an object')
                 self.values.update({k: v for k, v in saved.items() if k in DEFAULTS})
+                prune_saved = any(k not in DEFAULTS for k in saved)
             except (ValueError, OSError):
                 self.problem = '设置暂时读不出来，霜璃先用默认设置陪主人。'
                 logging.exception('Could not load settings')
@@ -60,6 +62,11 @@ class Config:
         for k in ('conversation_url', 'live2d_path', 'pack'):
             if not isinstance(self.values[k], str): self.values[k] = DEFAULTS[k]
         if not isinstance(self.values['todos'], list): self.values['todos'] = []
+        if prune_saved:
+            try: self.save()
+            except OSError:
+                self.problem = '设置清理暂时没能保存，霜璃稍后再试。'
+                logging.exception('Could not prune obsolete settings')
 
     def __getitem__(self, key):
         return self.values[key]
